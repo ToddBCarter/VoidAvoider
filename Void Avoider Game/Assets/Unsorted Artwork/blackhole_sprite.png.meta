@@ -124,37 +124,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: blackhole_sprite_0
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 137
-        width: 8
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c3a6cb7695d06a8c0800000000000000
-      internalID: -3988485742346343876
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: blackhole_sprite_1
       rect:
         serializedVersion: 2
-        x: 40
+        x: 29
         y: 55
-        width: 330
-        height: 140
+        width: 386
+        height: 142
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -167,165 +145,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: blackhole_sprite_2
-      rect:
-        serializedVersion: 2
-        x: 43
-        y: 123
-        width: 11
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7452ad8a689f68510800000000000000
-      internalID: 1551201478429517127
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: blackhole_sprite_3
-      rect:
-        serializedVersion: 2
-        x: 363
-        y: 122
-        width: 9
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c93f4adbb1f70f410800000000000000
-      internalID: 1508845632291664796
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: blackhole_sprite_4
-      rect:
-        serializedVersion: 2
-        x: 368
-        y: 135
-        width: 14
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5c9e7af9ac4bbc7e0800000000000000
-      internalID: -1744101648320960059
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: blackhole_sprite_5
-      rect:
-        serializedVersion: 2
-        x: 368
-        y: 127
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0c686ed29d862bee0800000000000000
-      internalID: -1246818864840931648
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: blackhole_sprite_6
-      rect:
-        serializedVersion: 2
-        x: 377
-        y: 127
-        width: 11
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2edb37566748c1f50800000000000000
-      internalID: 6853498376994143714
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: blackhole_sprite_7
-      rect:
-        serializedVersion: 2
-        x: 380
-        y: 128
-        width: 33
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: aefc7bddae77ff580800000000000000
-      internalID: -8791176096978055190
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: blackhole_sprite_8
-      rect:
-        serializedVersion: 2
-        x: 50
-        y: 119
-        width: 6
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 20df1e524627b5da0800000000000000
-      internalID: -5955040307809485566
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f730d7e197c1da44fbd123f8589c2f00
     internalID: 0
     vertices: []
     indices: 
