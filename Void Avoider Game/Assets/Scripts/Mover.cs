@@ -13,7 +13,7 @@ public class Mover : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector2.left * speed * Time.deltaTime);
+        transform.Translate(Vector3.left * speed * Time.deltaTime);
 
         if (transform.position.x < Camera.main.transform.position.x - destroyDistance)
         {
