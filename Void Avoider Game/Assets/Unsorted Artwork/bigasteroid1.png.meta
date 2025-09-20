@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: bee00c6f1e2923047a52e9be0e6bf8c4
+guid: 9e13b4c3d3dffe7409a0eb0a1b186376
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7443756053782179069
-    second: background_0
+      213: 5542169767663809818
+    second: bigasteroid1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: background_0
+      name: bigasteroid1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 800
-        height: 600
+        x: 34
+        y: 16
+        width: 245
+        height: 275
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 30356abce4772b890800000000000000
-      internalID: -7443756053782179069
+      spriteID: a15b28e3a0eb9ec40800000000000000
+      internalID: 5542169767663809818
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      background_0: -7443756053782179069
+      bigasteroid1_0: 5542169767663809818
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
