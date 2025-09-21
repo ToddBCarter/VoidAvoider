@@ -30,9 +30,11 @@ public class EndScreenController : MonoBehaviour
         {
             case 3:
                 finalEndScreen.SetActive(true);
+                Time.timeScale = 0f;
                 break;
             default:
                 endScreenDefault.SetActive(true);
+                Time.timeScale = 0f;
                 break;
         }
     }
