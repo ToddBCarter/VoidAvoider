@@ -19,6 +19,7 @@ public class Spawner : MonoBehaviour
         spawnYRange = Camera.main.orthographicSize;
         float objectSpeed = GameManager.Instance.objectSpeed;
         float spawnInterval = GameManager.Instance.spawnInterval;
+
         foreach (var obj in objectsToSpawn)
         {
             switch (obj.frequency)

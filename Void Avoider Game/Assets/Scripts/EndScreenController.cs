@@ -10,19 +10,31 @@ public class EndScreenController : MonoBehaviour
     [SerializeField] private GameObject lossPanel;
     [SerializeField] private Button retryButton;
 
+    public GameObject endScreenDefault;
+    public GameObject finalEndScreen;
+
     private void Start()
     {
-        victoryPanel.SetActive(false);
-        nextLevelButton.onClick.AddListener(LoadNextLevel);
-
         lossPanel.SetActive(false);
         retryButton.onClick.AddListener(ReloadLevel);
     }
 
     public void ShowVictory()
     {
-        victoryPanel.SetActive(true);
-        Time.timeScale = 0f;
+        int level = GameManager.Instance.currentLevel;
+
+        endScreenDefault.SetActive(false);
+        finalEndScreen.SetActive(false);
+
+        switch (level)
+        {
+            case 3:
+                finalEndScreen.SetActive(true);
+                break;
+            default:
+                endScreenDefault.SetActive(true);
+                break;
+        }
     }
 
     public void ShowLoss()
@@ -31,14 +43,14 @@ public class EndScreenController : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    private void LoadNextLevel()
-    {
-        SceneManager.LoadScene("Name");
-    }
-
     public void ReloadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
 
