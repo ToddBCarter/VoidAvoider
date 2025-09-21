@@ -6,9 +6,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private SpawnableObject[] objectsToSpawn;
-    [SerializeField] private float spawnInterval = 1f;
     [SerializeField] private float spawnYRange = 4.5f;
-    [SerializeField] private float objectSpeed = 5f;
 
     private readonly List<GameObject> highFrequency = new();
     private readonly List<GameObject> mediumFrequency = new();
@@ -19,6 +17,8 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         spawnYRange = Camera.main.orthographicSize;
+        float objectSpeed = GameManager.Instance.objectSpeed;
+        float spawnInterval = GameManager.Instance.spawnInterval;
         foreach (var obj in objectsToSpawn)
         {
             switch (obj.frequency)
@@ -40,7 +40,7 @@ public class Spawner : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= spawnInterval)
+        if (timer >= GameManager.Instance.spawnInterval)
         {
             SpawnObject();
             timer = 0f;
@@ -72,7 +72,7 @@ public class Spawner : MonoBehaviour
             Vector3 spawnPos = new(transform.position.x, Random.Range(-spawnYRange, spawnYRange), 0f);
             GameObject obj = Instantiate(chosenList[index], spawnPos, Quaternion.identity);
 
-            obj.AddComponent<Mover>().Speed = objectSpeed;
+            obj.AddComponent<Mover>().Speed = GameManager.Instance.objectSpeed;
         }
     }
 }
