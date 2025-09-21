@@ -8,6 +8,8 @@ public class HealthPowerUp : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            AudioManager.Instance.PlaySound("health");
+
             if (collision.TryGetComponent<PlayerHealth>(out var playerHealth))
             {
                 playerHealth.Heal(healthAmount);

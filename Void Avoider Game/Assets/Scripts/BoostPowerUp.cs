@@ -9,6 +9,7 @@ public class BoostPowerUp : MonoBehaviour
         if (collision.CompareTag("Player") &&
             collision.TryGetComponent<PlayerController>(out var player))
         {
+            AudioManager.Instance.PlaySound("boost");
             player.AddDistanceBoost(boostAmount);
             Destroy(gameObject);
         }
