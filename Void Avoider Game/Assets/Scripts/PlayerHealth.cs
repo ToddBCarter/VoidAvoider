@@ -23,6 +23,7 @@ public class PlayerHealth : MonoBehaviour
 	public Sprite noShield;
 	public Sprite shieldOn;
 
+	private float total_duration = 0f;
 
     private void Awake()
     {
@@ -59,12 +60,14 @@ public class PlayerHealth : MonoBehaviour
     public void ActivateShield(float duration)
     {
         isShieldActive = true;
-        StartCoroutine(ShieldTimer(duration));
+		total_duration = total_duration + duration;
+        StartCoroutine(ShieldTimer(total_duration));
 		spriteRenderer.sprite = shieldOn;
     }
 
     private IEnumerator ShieldTimer(float duration)
     {
+		total_duration -= Time.deltaTime;
         yield return new WaitForSeconds(duration);
         isShieldActive = false;
 		spriteRenderer.sprite = noShield;
