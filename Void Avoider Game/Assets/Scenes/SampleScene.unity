@@ -1355,7 +1355,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 4
   pullSpeed: 2
-  xLimit: -3
+  xLimit: -4
+  escapeDistance: 5
+  destroyDistance: 10
+  finalScale: 0.1
+  shrinkDuration: 1
+  rotationSpeed: 10
 --- !u!114 &813305835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2151,12 +2156,12 @@ MonoBehaviour:
     frequency: 1
   - prefab: {fileID: 5654573340494240934, guid: 53fc8f108791d624da43c2c1868eeb15, type: 3}
     frequency: 1
-  - prefab: {fileID: 4951866244691372174, guid: 4b244be7707357c459408bba5e40e3bd, type: 3}
-    frequency: 1
   - prefab: {fileID: 18692190822824757, guid: df377675f036e8445aa048732a907673, type: 3}
     frequency: 1
   - prefab: {fileID: 7463569666355409588, guid: 4390e9e08d3157d4fb9828a82a8dd0f2, type: 3}
     frequency: 1
+  - prefab: {fileID: 4951866244691372174, guid: 4b244be7707357c459408bba5e40e3bd, type: 3}
+    frequency: 0
   - prefab: {fileID: 7841178333928287223, guid: 281b254c7f208ff488865626bbd3ce9c, type: 3}
     frequency: 0
   - prefab: {fileID: 2930165963029652249, guid: 7553646d0a9f67f40919cb43513274dd, type: 3}
