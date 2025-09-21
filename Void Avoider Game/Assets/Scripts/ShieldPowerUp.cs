@@ -1,15 +1,15 @@
 using UnityEngine;
 
-public class Asteroid : MonoBehaviour
+public class ShieldPowerUp : MonoBehaviour
 {
-    [SerializeField] private float damage = 10f;
+    [SerializeField] private float shieldDuration = 5f; // seconds
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") &&
             collision.TryGetComponent<PlayerHealth>(out var playerHealth))
         {
-            playerHealth.TakeDamage(damage);
+            playerHealth.ActivateShield(shieldDuration);
             Destroy(gameObject);
         }
     }
