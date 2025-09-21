@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class LevelTimer : MonoBehaviour
 {
     public TextMeshProUGUI timerText;
-    public float levelTime = 60f;
     public float countdown = 3f;
     public PlayerHealth playerHealth;
     public EndScreenController endScreenController;
@@ -18,7 +17,7 @@ public class LevelTimer : MonoBehaviour
     void Start()
     {
         Time.timeScale = 0f;
-        timeRemaining = levelTime;
+        timeRemaining = GameManager.Instance.levelTime;
         StartCoroutine(StartCountdown());
     }
 

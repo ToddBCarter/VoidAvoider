@@ -1744,6 +1744,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &780464642
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 780464644}
+  - component: {fileID: 780464643}
+  m_Layer: 0
+  m_Name: NextLevelScript
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &780464643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780464642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c8dd6688f9db354ba5ae4fd7d46063d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &780464644
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780464642}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 311.60703, y: 215.28838, z: -1.926421}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &783126560
 GameObject:
   m_ObjectHideFlags: 0
@@ -2051,6 +2095,53 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &898059287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 898059289}
+  - component: {fileID: 898059288}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &898059288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898059287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd64dc079612e9646ae2fbf85c37adb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelTime: 60
+  objectSpeed: 5
+  spawnInterval: 1
+--- !u!4 &898059289
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898059287}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 311.60703, y: 215.28838, z: -1.926421}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &960292951
 GameObject:
   m_ObjectHideFlags: 0
@@ -2219,7 +2310,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1853605413}
-  levelTime: 10
   countdown: 3
   playerHealth: {fileID: 741367739}
   endScreenController: {fileID: 691675850}
@@ -3466,9 +3556,7 @@ MonoBehaviour:
     frequency: 0
   - prefab: {fileID: 447793602397792177, guid: 7d88f97c8921fba47af42522fe757543, type: 3}
     frequency: 0
-  spawnInterval: 0.5
   spawnYRange: 4
-  objectSpeed: 4
 --- !u!4 &1491037501
 Transform:
   m_ObjectHideFlags: 0
@@ -3809,7 +3897,7 @@ GameObject:
   - component: {fileID: 1827670026}
   - component: {fileID: 1827670025}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: LevelTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3828,7 +3916,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1853605413}
-  levelTime: 10
   countdown: 3
   playerHealth: {fileID: 741367739}
   endScreenController: {fileID: 691675850}
@@ -4147,7 +4234,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2039687320}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 780464643}
+        m_TargetAssemblyTypeName: NextLevel, Assembly-CSharp
+        m_MethodName: LoadLevel2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2039687320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4593,3 +4692,5 @@ SceneRoots:
   - {fileID: 741367738}
   - {fileID: 691675851}
   - {fileID: 1005479487}
+  - {fileID: 898059289}
+  - {fileID: 780464644}
