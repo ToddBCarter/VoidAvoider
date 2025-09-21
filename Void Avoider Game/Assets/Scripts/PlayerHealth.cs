@@ -7,8 +7,14 @@ public class PlayerHealth : MonoBehaviour
     private float currentHealth;
     private bool isShieldActive = false;
 
+    public EndScreenController endScreenController;
+
     public float MaxHealth => maxHealth;
-    public float CurrentHealth => currentHealth;
+    public float CurrentHealth
+    {
+        get => currentHealth;
+        set => currentHealth = value;
+    }
 
     private void Awake()
     {
@@ -31,6 +37,8 @@ public class PlayerHealth : MonoBehaviour
         {
             Debug.Log("Ship destroyed!");
             gameObject.SetActive(false);
+            currentHealth = 0;
+            endScreenController.ShowLoss();
         }
     }
 
