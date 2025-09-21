@@ -1,17 +1,23 @@
+using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelTimer : MonoBehaviour
 {
     public TextMeshProUGUI timerText;
     public float levelTime = 60f;
     public float countdown = 3f;
+    public PlayerHealth playerHealth;
+    public VictoryScreenController victoryScreenController;
 
     private float timeRemaining;
     private bool timerRunning = false;
 
     void Start()
     {
+        Time.timeScale = 0f;
         timeRemaining = levelTime;
         StartCoroutine(StartCountdown());
     }
@@ -22,7 +28,7 @@ public class LevelTimer : MonoBehaviour
         {
             if (timeRemaining > 0)
             {
-                timeRemaining -= Time.deltaTime;
+                timeRemaining -= Time.unscaledDeltaTime;
                 DisplayTime(timeRemaining);
             }
             else
@@ -30,7 +36,14 @@ public class LevelTimer : MonoBehaviour
                 timerRunning = false;
                 timeRemaining = 0;
                 DisplayTime(timeRemaining);
-                Debug.Log("Out of time!");
+                if (playerHealth.CurrentHealth > 0)
+                {
+                    victoryScreenController.ShowVictory();
+                }
+                else
+                {
+                    Debug.Log("Player dead.");
+                }
             }
         }
     }
@@ -41,9 +54,10 @@ public class LevelTimer : MonoBehaviour
         while (count > 0)
         {
             timerText.text = "Starting in " + Mathf.Ceil(count).ToString();
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSecondsRealtime(1f);
             count--;
         }
+        Time.timeScale = 1f;
         timerRunning = true;
     }
     
