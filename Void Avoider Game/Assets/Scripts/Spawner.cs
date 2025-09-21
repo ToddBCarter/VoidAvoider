@@ -1,17 +1,40 @@
+using System.Collections.Generic;
+using NUnit.Framework;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private GameObject[] objectsToSpawn;
+    [SerializeField] private SpawnableObject[] objectsToSpawn;
     [SerializeField] private float spawnInterval = 1f;
-    public float spawnYRange = 4.5f;
+    [SerializeField] private float spawnYRange = 4.5f;
     [SerializeField] private float objectSpeed = 5f;
+
+    private readonly List<GameObject> highFrequency = new();
+    private readonly List<GameObject> mediumFrequency = new();
+    private readonly List<GameObject> lowFrequency = new();
 
     private float timer;
 
     void Start()
     {
         spawnYRange = Camera.main.orthographicSize;
+        foreach (var obj in objectsToSpawn)
+        {
+            switch (obj.frequency)
+            {
+                case SpawnFrequency.High:
+                    highFrequency.Add(obj.prefab);
+                    break;
+                case SpawnFrequency.Medium:
+                    mediumFrequency.Add(obj.prefab);
+                    break;
+                case SpawnFrequency.Low:
+                    lowFrequency.Add(obj.prefab);
+                    break;
+            }
+        }
+
     }
 
     void Update()
@@ -26,12 +49,25 @@ public class Spawner : MonoBehaviour
 
     void SpawnObject()
     {
-        int index = Random.Range(0, objectsToSpawn.Length);
-
-        float halfHeight = Camera.main.orthographicSize;
-
-        Vector3 spawnPos = new Vector3(transform.position.x, Random.Range(-spawnYRange, spawnYRange), 0f);
-        GameObject obj = Instantiate(objectsToSpawn[index], spawnPos, Quaternion.identity);
+        int roll = Random.Range(0, 7);
+        List<GameObject> chosenList;
+        if (roll <= 3)
+        {
+            chosenList = highFrequency;
+        }
+        else if (roll <= 5)
+        {
+            chosenList = mediumFrequency;
+        }
+        else
+        {
+            chosenList = lowFrequency;
+        }
+            
+        int index = Random.Range(0, chosenList.Count);
+        
+        Vector3 spawnPos = new(transform.position.x, Random.Range(-spawnYRange, spawnYRange), 0f);
+        GameObject obj = Instantiate(chosenList[index], spawnPos, Quaternion.identity);
 
         obj.AddComponent<Mover>().Speed = objectSpeed;
     }

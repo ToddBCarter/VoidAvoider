@@ -6,14 +6,10 @@ public class Asteroid : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") &&
+            collision.TryGetComponent<PlayerHealth>(out var playerHealth))
         {
-            PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
-            {
-                playerHealth.TakeDamage(damage);
-            }
-
+            playerHealth.TakeDamage(damage);
             Destroy(gameObject);
         }
     }
