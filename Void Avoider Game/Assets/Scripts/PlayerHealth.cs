@@ -10,11 +10,19 @@ public class PlayerHealth : MonoBehaviour
     public EndScreenController endScreenController;
 
     public float MaxHealth => maxHealth;
+
     public float CurrentHealth
     {
         get => currentHealth;
         set => currentHealth = value;
     }
+
+    //public float CurrentHealth => currentHealth;
+	
+	public SpriteRenderer spriteRenderer;
+	public Sprite noShield;
+	public Sprite shieldOn;
+
 
     private void Awake()
     {
@@ -52,12 +60,14 @@ public class PlayerHealth : MonoBehaviour
     {
         isShieldActive = true;
         StartCoroutine(ShieldTimer(duration));
+		spriteRenderer.sprite = shieldOn;
     }
 
     private IEnumerator ShieldTimer(float duration)
     {
         yield return new WaitForSeconds(duration);
         isShieldActive = false;
+		spriteRenderer.sprite = noShield;
     }
 
 

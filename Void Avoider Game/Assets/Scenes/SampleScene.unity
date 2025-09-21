@@ -716,7 +716,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.4330139, y: -2.149704}
+  m_AnchoredPosition: {x: -1.4329834, y: -2.1497192}
   m_SizeDelta: {x: 37.2592, y: 27.228}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &293799180
@@ -2321,6 +2321,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   endScreenController: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  noShield: {fileID: 0}
+  shieldOn: {fileID: 0}
 --- !u!4 &741367738
 Transform:
   m_ObjectHideFlags: 0
@@ -2760,6 +2763,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   endScreenController: {fileID: 691675852}
+  spriteRenderer: {fileID: 813305832}
+  noShield: {fileID: 413986153270297580, guid: 3afd468c90449d54abbdad266fd1538e, type: 3}
+  shieldOn: {fileID: -2248575837717520672, guid: 2ca1c413251b8304ba8a82cc84635ec8, type: 3}
 --- !u!60 &813305836
 PolygonCollider2D:
   m_ObjectHideFlags: 0
