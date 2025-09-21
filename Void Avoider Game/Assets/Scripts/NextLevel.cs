@@ -1,0 +1,31 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class NextLevel : MonoBehaviour
+{
+    public void LoadNextLevel()
+    {
+        GameManager.Instance.currentLevel++;
+
+        switch (GameManager.Instance.currentLevel)
+        {
+            case 2:
+                GameManager.Instance.levelTime = 90f;
+                GameManager.Instance.objectSpeed = 8f;
+                GameManager.Instance.spawnInterval = 0.7f;
+                break;
+            case 3:
+                GameManager.Instance.levelTime = 120f;
+                GameManager.Instance.objectSpeed = 10f;
+                GameManager.Instance.spawnInterval = 0.5f;
+                break;
+            default:
+                GameManager.Instance.levelTime = 60f;
+                GameManager.Instance.objectSpeed = 12f;
+                GameManager.Instance.spawnInterval = 0.4f;
+                break;
+        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+}
+

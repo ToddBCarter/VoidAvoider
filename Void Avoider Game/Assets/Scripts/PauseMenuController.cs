@@ -25,18 +25,19 @@ public class PauseMenuController : MonoBehaviour
     }
 	
 	public void pauseGame()
-	{
-		pauseMenuCanvas.SetActive(true);
-		Time.timeScale = 0f;
-		timer.pause();
-	}
-	
-	public void unpauseGame()
-	{
-		pauseMenuCanvas.SetActive(false);
-		Time.timeScale = 1f;
-		timer.unpause();
-	}
+    {
+        pauseMenuCanvas.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void unpauseGame()
+    {
+        pauseMenuCanvas.SetActive(false);
+        if (timer.timerRunning)
+        {
+            Time.timeScale = 1f;
+        }
+    }
 	
 	public void exitGame()
 	{

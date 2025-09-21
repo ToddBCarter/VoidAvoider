@@ -9,6 +9,7 @@ public class Asteroid : MonoBehaviour
         if (collision.CompareTag("Player") &&
             collision.TryGetComponent<PlayerHealth>(out var playerHealth))
         {
+            AudioManager.Instance.PlaySound("asteroid");
             playerHealth.TakeDamage(damage);
             Destroy(gameObject);
         }

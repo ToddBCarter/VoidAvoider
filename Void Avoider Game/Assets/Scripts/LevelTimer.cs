@@ -1,60 +1,32 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using UnityEngine.InputSystem;
 
 public class LevelTimer : MonoBehaviour
 {
     public TextMeshProUGUI timerText;
-    public float levelTime = 60f;
-    public float countdown = 20f;
+    public float countdown = 3f;
     public PlayerHealth playerHealth;
-    public VictoryScreenController victoryScreenController;
+    public EndScreenController endScreenController;
+    [SerializeField] private GameObject pauseMenuCanvas;
 
     private float timeRemaining;
-	private float countdownRemaining;
-    private bool timerRunning = false;
-	private bool countingDown = true;
-	private bool paused = false;
-	private int cdR = 0;
+    public bool timerRunning = false;
 
     void Start()
     {
         Time.timeScale = 0f;
-        timeRemaining = levelTime;
-		countdownRemaining = countdown;
-        //StartCoroutine(StartCountdown());
-		//Debug.Log("whatever" + countdown);
+        timeRemaining = GameManager.Instance.levelTime;
+        StartCoroutine(StartCountdown());
     }
 
     void Update()
     {
-		if (countingDown)
-		{
-			float delta = Mathf.Min(Time.unscaledDeltaTime, 0.1f);
-			countdownRemaining -= delta;
-			//cdR = Mathf.FloorToInt(countdownRemaining / 360); //translate to seconds
-			if (countdownRemaining > 0)
-			{
-				timerText.text = "Starting in " + Mathf.Ceil(countdownRemaining).ToString();
-			}
-			else
-			{
-				if(paused == false)
-				{
-					countingDown = false;
-					Time.timeScale = 1f;
-					timerRunning = true;
-				}
-			}
-		}		
-        else if (timerRunning)
+        if (timerRunning)
         {
-			//Debug.Log("test" + timerRunning);
             if (timeRemaining > 0)
             {
+                //timeRemaining -= Time.unscaledDeltaTime;
                 timeRemaining -= Time.deltaTime;
                 DisplayTime(timeRemaining);
             }
@@ -63,10 +35,9 @@ public class LevelTimer : MonoBehaviour
                 timerRunning = false;
                 timeRemaining = 0;
                 DisplayTime(timeRemaining);
-                
-				if (playerHealth.CurrentHealth > 0)
+                if (playerHealth.CurrentHealth > 0)
                 {
-                    victoryScreenController.ShowVictory();
+                    endScreenController.ShowVictory();
                 }
                 else
                 {
@@ -76,21 +47,38 @@ public class LevelTimer : MonoBehaviour
         }
     }
 
-    System.Collections.IEnumerator StartCountdown()
+public IEnumerator StartCountdown()
     {
         float count = countdown;
-        while (count > 0)
+        while (true)
         {
-            timerText.text = "Starting in " + Mathf.Ceil(count).ToString();
-            yield return new WaitForSeconds(1f);
-            count--;
+            while (count > 0)
+            {
+                if (!pauseMenuCanvas.activeInHierarchy)
+                {
+                    timerText.text = "Starting in " + Mathf.Ceil(count).ToString();
+                    yield return new WaitForSecondsRealtime(1f);
+                    count--;
+                }
+                else
+                {
+                    yield return null;
+                }
+            }
+            if (!pauseMenuCanvas.activeInHierarchy)
+            {
+                Time.timeScale = 1f;
+                timerRunning = true;
+                break;
+            }
+            else
+            {
+                count++;
+            }
         }
-		
-		//StopCoroutine(StartCountdown());
-        timerRunning = true;
-		Time.timeScale = 1f;
+
     }
-    
+
     void DisplayTime(float timeToDisplay)
     {
         timeToDisplay = Mathf.Max(timeToDisplay, 0);
@@ -98,17 +86,4 @@ public class LevelTimer : MonoBehaviour
         int seconds = Mathf.FloorToInt(timeToDisplay % 60);
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
-	
-	public void pause()
-	{
-		Time.timeScale = 0f;
-		paused = true;
-	}
-	
-	public void unpause()
-	{
-		Time.timeScale = 1f;
-		paused = false;	
-	}
 }
-
