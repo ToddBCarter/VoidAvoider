@@ -10,7 +10,7 @@ public class LevelTimer : MonoBehaviour
     public float levelTime = 60f;
     public float countdown = 3f;
     public PlayerHealth playerHealth;
-    public VictoryScreenController victoryScreenController;
+    public EndScreenController endScreenController;
 
     private float timeRemaining;
     private bool timerRunning = false;
@@ -38,7 +38,7 @@ public class LevelTimer : MonoBehaviour
                 DisplayTime(timeRemaining);
                 if (playerHealth.CurrentHealth > 0)
                 {
-                    victoryScreenController.ShowVictory();
+                    endScreenController.ShowVictory();
                 }
                 else
                 {
