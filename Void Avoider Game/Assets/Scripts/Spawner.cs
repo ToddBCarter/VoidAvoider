@@ -49,26 +49,30 @@ public class Spawner : MonoBehaviour
 
     void SpawnObject()
     {
-        int roll = Random.Range(0, 7);
-        List<GameObject> chosenList;
-        if (roll <= 3)
+        int numberToSpawn = Random.Range(0, 4);
+        for (int i = 0; i < numberToSpawn; i++)
         {
-            chosenList = highFrequency;
-        }
-        else if (roll <= 5)
-        {
-            chosenList = mediumFrequency;
-        }
-        else
-        {
-            chosenList = lowFrequency;
-        }
-            
-        int index = Random.Range(0, chosenList.Count);
-        
-        Vector3 spawnPos = new(transform.position.x, Random.Range(-spawnYRange, spawnYRange), 0f);
-        GameObject obj = Instantiate(chosenList[index], spawnPos, Quaternion.identity);
+            int roll = Random.Range(1, 11);
+            List<GameObject> chosenList;
+            if (roll <= 6)
+            {
+                chosenList = highFrequency;
+            }
+            else if (roll <= 9)
+            {
+                chosenList = mediumFrequency;
+            }
+            else
+            {
+                chosenList = lowFrequency;
+            }
 
-        obj.AddComponent<Mover>().Speed = objectSpeed;
+            int index = Random.Range(0, chosenList.Count);
+
+            Vector3 spawnPos = new(transform.position.x, Random.Range(-spawnYRange, spawnYRange), 0f);
+            GameObject obj = Instantiate(chosenList[index], spawnPos, Quaternion.identity);
+
+            obj.AddComponent<Mover>().Speed = objectSpeed;
+        }
     }
 }
