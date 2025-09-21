@@ -17,7 +17,7 @@ public class Mover : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector3.left * speed * Time.deltaTime);
+        transform.Translate(speed * Time.deltaTime * Vector3.left);
 
         if (transform.position.x < Camera.main.transform.position.x - destroyDistance)
         {
@@ -30,7 +30,7 @@ public class Mover : MonoBehaviour
         speed = 1f;
 
         Vector3 startScale = transform.localScale;
-        Vector3 targetScale = new Vector3(finalScale, finalScale, startScale.z);
+        Vector3 targetScale = new(finalScale, finalScale, startScale.z);
 
         float elapsedTime = 0f;
 

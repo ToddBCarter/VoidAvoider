@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1446887913707375552}
   - component: {fileID: 7981015882080335227}
   - component: {fileID: 7564629774778919519}
+  - component: {fileID: 6084102434228293619}
   m_Layer: 0
   m_Name: shield_up_0
   m_TagString: Untagged
@@ -236,3 +237,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6084102434228293619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7463569666355409588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93926cfdaabb83a49a588b99e2e56d20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldDuration: 5
