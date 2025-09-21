@@ -21,6 +21,12 @@ public class PlayerController : MonoBehaviour
 
     private bool isShrinking = false;
 
+    public float MoveSpeed
+    {
+        get => moveSpeed;
+        set => moveSpeed = value;
+    }
+
     private void Awake()
     {
         moveAction = InputSystem.actions.FindAction("Move");
