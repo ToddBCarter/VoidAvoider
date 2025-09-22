@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public int currentLevel = 1;
     public float levelTime = 60f;
     public float objectSpeed = 5f;
-    public float spawnInterval = 1f; 
+    public float spawnInterval = 1f;
 
     void Awake()
     {
