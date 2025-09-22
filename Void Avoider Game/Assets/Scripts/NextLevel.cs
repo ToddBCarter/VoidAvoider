@@ -26,6 +26,13 @@ public class NextLevel : MonoBehaviour
         }
     }
 	
+    public void LoadEndlessLevel()
+    {
+        GameManager.Instance.currentLevel = 4; // endless mode
+        GameManager.Instance.endlessMode = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void LoadNextLevel()
     {
         GameManager.Instance.currentLevel++;
@@ -33,19 +40,27 @@ public class NextLevel : MonoBehaviour
         switch (GameManager.Instance.currentLevel)
         {
             case 2:
-                GameManager.Instance.levelTime = 90f;
-                GameManager.Instance.objectSpeed = 14f;
-                GameManager.Instance.spawnInterval = 0.7f;
+                GameManager.Instance.levelTime = 9f;
+                GameManager.Instance.objectSpeed = 12f;
+                GameManager.Instance.spawnInterval = 0.5f;
+                GameManager.Instance.endlessMode = false;
                 break;
             case 3:
-                GameManager.Instance.levelTime = 120f;
-                GameManager.Instance.objectSpeed = 10f;
-                GameManager.Instance.spawnInterval = 0.5f;
+                GameManager.Instance.levelTime = 12f;
+                GameManager.Instance.objectSpeed = 14f;
+                GameManager.Instance.spawnInterval = 0.4f;
+                GameManager.Instance.endlessMode = false;
+                break;
+            case 4:
+                GameManager.Instance.objectSpeed = 16f;
+                GameManager.Instance.spawnInterval = 0.3f;
+                GameManager.Instance.endlessMode = true;
                 break;
             default:
-                GameManager.Instance.levelTime = 60f;
-                GameManager.Instance.objectSpeed = 12f;
-                GameManager.Instance.spawnInterval = 0.4f;
+                GameManager.Instance.levelTime = 6f;
+                GameManager.Instance.objectSpeed = 10f;
+                GameManager.Instance.spawnInterval = 0.5f;
+                GameManager.Instance.endlessMode = false;
                 break;
         }
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

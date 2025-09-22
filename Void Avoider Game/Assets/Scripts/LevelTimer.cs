@@ -10,13 +10,21 @@ public class LevelTimer : MonoBehaviour
     public EndScreenController endScreenController;
     [SerializeField] private GameObject pauseMenuCanvas;
 
-    private float timeRemaining;
+    private float timer;
     public bool timerRunning = false;
 
     void Start()
     {
         Time.timeScale = 0f;
-        timeRemaining = GameManager.Instance.levelTime;
+        if (GameManager.Instance.endlessMode)
+        {
+            timer = 0f;
+        }
+        else
+        {
+            timer = GameManager.Instance.levelTime; // normal countdown
+        }
+
         StartCoroutine(StartCountdown());
     }
 
@@ -24,27 +32,44 @@ public class LevelTimer : MonoBehaviour
     {
         if (timerRunning)
         {
-            if (timeRemaining > 0)
+            if (!GameManager.Instance.endlessMode)
             {
-                //timeRemaining -= Time.unscaledDeltaTime;
-                timeRemaining -= Time.deltaTime;
-                DisplayTime(timeRemaining);
-            }
-            else
-            {
-                timerRunning = false;
-                timeRemaining = 0;
-                DisplayTime(timeRemaining);
-                if (playerHealth.CurrentHealth > 0)
+                if (timer > 0)
                 {
-                    AudioManager.Instance.PlaySound("whoosh");
-                    AudioManager.Instance.PlaySound("success");
-                    AudioManager.Instance.ChangeBackgroundMusic(AudioManager.Instance.VictoryMusic, 0.4f, true);
-                    endScreenController.ShowVictory();
+                    //timeRemaining -= Time.unscaledDeltaTime;
+                    timer -= Time.deltaTime;
+                    DisplayTime(timer);
                 }
                 else
                 {
-                    Debug.Log("Player dead.");
+                    timerRunning = false;
+                    timer = 0;
+                    DisplayTime(timer);
+                    if (playerHealth.CurrentHealth > 0)
+                    {
+                        AudioManager.Instance.PlaySound("whoosh");
+                        AudioManager.Instance.PlaySound("success");
+                        AudioManager.Instance.ChangeBackgroundMusic(AudioManager.Instance.VictoryMusic, 0.4f, true);
+                        endScreenController.ShowVictory();
+                    }
+                    else
+                    {
+                        endScreenController.ShowLoss();
+                    }
+                }
+            }
+            else
+            {
+                if (playerHealth.CurrentHealth > 0)
+                {
+                    timer += Time.deltaTime;
+                    DisplayTime(timer);
+                }
+                else
+                {
+                    timerRunning = false;
+                    string message = "Time survived: " + FormatTime(timer);
+                endScreenController.ShowLoss(message);
                 }
             }
         }
@@ -84,9 +109,13 @@ public IEnumerator StartCountdown()
 
     void DisplayTime(float timeToDisplay)
     {
-        timeToDisplay = Mathf.Max(timeToDisplay, 0);
-        int minutes = Mathf.FloorToInt(timeToDisplay / 60);
-        int seconds = Mathf.FloorToInt(timeToDisplay % 60);
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timerText.text = FormatTime(timeToDisplay);
+    }
+
+    string FormatTime(float time)
+    {
+        int minutes = Mathf.FloorToInt(time / 60);
+        int seconds = Mathf.FloorToInt(time % 60);
+        return string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }
