@@ -42,6 +42,7 @@ public class EndScreenController : MonoBehaviour
     public void ShowLoss()
     {
         lossPanel.SetActive(true);
+        AudioManager.Instance.ChangeBackgroundMusic(AudioManager.Instance.MenuMusic, 0.4f, true);
         Time.timeScale = 0f;
     }
 
@@ -52,7 +53,6 @@ public class EndScreenController : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
+        SceneManager.LoadScene("MainMenu");
     }
 }
-

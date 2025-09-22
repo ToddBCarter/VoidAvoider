@@ -6,6 +6,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float maxHealth = 100f;
     private float currentHealth;
     private bool isShieldActive = false;
+    private float shieldDuration = 0f;
 
     public EndScreenController endScreenController;
 
@@ -59,19 +60,27 @@ public class PlayerHealth : MonoBehaviour
 
     public void ActivateShield(float duration)
     {
-        isShieldActive = true;
-		total_duration = total_duration + duration;
-        StartCoroutine(ShieldTimer(total_duration));
-		spriteRenderer.sprite = shieldOn;
+        shieldDuration += duration;
+
+        if (!isShieldActive)
+        {
+            isShieldActive = true;
+            spriteRenderer.sprite = shieldOn;
+            StartCoroutine(ShieldTimer());
+        }
     }
 
-    private IEnumerator ShieldTimer(float duration)
+    private IEnumerator ShieldTimer()
     {
-		total_duration -= Time.deltaTime;
-        yield return new WaitForSeconds(duration);
+        while (shieldDuration > 0f)
+        {
+            shieldDuration -= Time.deltaTime;
+            Debug.Log("shield duration in coroutine: " + shieldDuration);
+            yield return null;
+        }
+
+        shieldDuration = 0f;
         isShieldActive = false;
 		spriteRenderer.sprite = noShield;
     }
-
-
 }
