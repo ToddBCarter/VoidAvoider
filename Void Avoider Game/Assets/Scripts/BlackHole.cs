@@ -10,6 +10,7 @@ public class BlackHole : MonoBehaviour
         {
             playerHealth.CurrentHealth = 0;
             EndScreenController endScreenController = FindObjectOfType<EndScreenController>();
+            AudioManager.Instance.PlaySound("failure");
             endScreenController.ShowLoss();
         }
     }

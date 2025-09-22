@@ -7,17 +7,22 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioClip backgroundMusic;
+    [SerializeField] private AudioClip victoryMusic;
+    [SerializeField] private AudioClip menuMusic;
     [SerializeField] private float musicVolume = 0.3f;
 
     [SerializeField] private List<SoundEffect> soundEffects;
+
+    public AudioClip VictoryMusic => victoryMusic;
+    public AudioClip MenuMusic => menuMusic;
 
     private void Awake()
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(gameObject);
-            return;
+            Destroy(Instance.gameObject);
         }
+
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
@@ -42,6 +47,30 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning($"Sound {name} not found!");
         }
     }
+
+    public void ChangeBackgroundMusic(AudioClip newClip, float newVolume = -1f, bool loop = true)
+    {
+        if (musicSource == null || newClip == null) return;
+
+        musicSource.Stop();
+        musicSource.clip = newClip;
+
+        if (newVolume >= 0f)
+            musicSource.volume = newVolume;
+        else
+            musicSource.volume = musicVolume; // default volume
+
+        musicSource.loop = loop;
+        musicSource.Play();
+    }
+
+    public void ResetBackgroundMusic()
+    {
+        if (musicSource == null || backgroundMusic == null) return;
+
+        ChangeBackgroundMusic(backgroundMusic, musicVolume, true);
+    }
+
 }
 
 [System.Serializable]

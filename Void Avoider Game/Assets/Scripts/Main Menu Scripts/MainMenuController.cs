@@ -5,8 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
-    public void startGame()
+	public void startGame()
 	{
+		StartCoroutine(DelayedGameStart());
+	}
+
+	private IEnumerator DelayedGameStart()
+	{
+		yield return new WaitForSeconds(0.5f);
 		SceneManager.LoadScene("SampleScene");
 	}
 	

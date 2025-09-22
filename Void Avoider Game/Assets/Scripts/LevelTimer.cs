@@ -37,6 +37,9 @@ public class LevelTimer : MonoBehaviour
                 DisplayTime(timeRemaining);
                 if (playerHealth.CurrentHealth > 0)
                 {
+                    AudioManager.Instance.PlaySound("whoosh");
+                    AudioManager.Instance.PlaySound("success");
+                    AudioManager.Instance.ChangeBackgroundMusic(AudioManager.Instance.VictoryMusic, 0.4f, true);
                     endScreenController.ShowVictory();
                 }
                 else
