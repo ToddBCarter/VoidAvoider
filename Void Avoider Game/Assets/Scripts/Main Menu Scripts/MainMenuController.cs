@@ -7,6 +7,7 @@ public class MainMenuController : MonoBehaviour
 {
 	public void startGame()
 	{
+		Time.timeScale = 1f;
 		StartCoroutine(DelayedGameStart());
 	}
 

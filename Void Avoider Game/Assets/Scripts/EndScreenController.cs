@@ -44,7 +44,8 @@ public class EndScreenController : MonoBehaviour
     public void ShowLoss(string message = null)
     {
         lossPanel.SetActive(true);
-        if (GameManager.Instance.endlessMode = true)
+        Debug.Log(message);
+        if (GameManager.Instance.endlessMode == true)
         {
             lossText.text = message;
         }

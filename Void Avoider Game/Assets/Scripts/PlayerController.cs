@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isShrinking = false;
     [SerializeField] PlayerHealth playerHealth;
+    [SerializeField] LevelTimer LevelTimer;
 
     public float MoveSpeed
     {
@@ -94,11 +95,21 @@ public class PlayerController : MonoBehaviour
         transform.localScale = targetScale;
 
         playerHealth.CurrentHealth = 0;
+        Debug.Log("health decreased to: " + playerHealth.CurrentHealth);
         EndScreenController endScreenController = FindObjectOfType<EndScreenController>();
         AudioManager.Instance.PlaySound("failure");
-        endScreenController.ShowLoss();
+        if (!GameManager.Instance.endlessMode == true)
+        {
+            Debug.Log("player controller");
+            endScreenController.ShowLoss();
+        }
+        else
+        {
+            string message = "Time survived: " + LevelTimer.FormatTime(LevelTimer.EndlessTime);
+            endScreenController.ShowLoss(message);
+        }
 
-        Destroy(gameObject);
+            Destroy(gameObject);
     }
 
     public void AddDistanceBoost(float amount)

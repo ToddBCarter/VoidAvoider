@@ -1040,9 +1040,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSource: {fileID: 1430831226}
-  backgroundMusic: {fileID: 8300000, guid: 8d90d13606e8dd3468b5039c0ab202ad, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: 665c248d962fcdc4397cde37ebf49a85, type: 3}
   victoryMusic: {fileID: 8300000, guid: 02e878d78bdee22448cdb99be1eaac15, type: 3}
-  menuMusic: {fileID: 8300000, guid: 8d90d13606e8dd3468b5039c0ab202ad, type: 3}
+  menuMusic: {fileID: 8300000, guid: 665c248d962fcdc4397cde37ebf49a85, type: 3}
   musicVolume: 0.5
   soundEffects:
   - name: button

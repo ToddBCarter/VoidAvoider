@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     private float shieldDuration = 0f;
 
     public EndScreenController endScreenController;
+    [SerializeField] LevelTimer LevelTimer;
 
     public float MaxHealth => maxHealth;
 
@@ -48,7 +49,15 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("Ship destroyed!");
             gameObject.SetActive(false);
             currentHealth = 0;
-            endScreenController.ShowLoss();
+            if (!GameManager.Instance.endlessMode == true)
+            {
+                endScreenController.ShowLoss();
+            }
+            else
+            {
+                string message = "Time survived: " + LevelTimer.FormatTime(LevelTimer.EndlessTime);
+                endScreenController.ShowLoss(message);
+            }
         }
     }
 

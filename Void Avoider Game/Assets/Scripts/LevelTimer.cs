@@ -11,14 +11,17 @@ public class LevelTimer : MonoBehaviour
     [SerializeField] private GameObject pauseMenuCanvas;
 
     private float timer;
+    private float endlessTimer;
+
     public bool timerRunning = false;
+    public float EndlessTime => endlessTimer;
 
     void Start()
     {
         Time.timeScale = 0f;
         if (GameManager.Instance.endlessMode)
         {
-            timer = 0f;
+            endlessTimer = 0f;
         }
         else
         {
@@ -54,22 +57,26 @@ public class LevelTimer : MonoBehaviour
                     }
                     else
                     {
+                        Debug.Log("Non-endless mode");
                         endScreenController.ShowLoss();
                     }
                 }
             }
             else
             {
+                Debug.Log("endless");
                 if (playerHealth.CurrentHealth > 0)
                 {
-                    timer += Time.deltaTime;
-                    DisplayTime(timer);
+                    Debug.Log("health: " +  playerHealth.CurrentHealth);
+                    endlessTimer += Time.deltaTime;
+                    DisplayTime(endlessTimer);
                 }
                 else
                 {
+                    Debug.Log("Ran out of health");
                     timerRunning = false;
-                    string message = "Time survived: " + FormatTime(timer);
-                endScreenController.ShowLoss(message);
+                    string message = "Time survived: " + FormatTime(endlessTimer);
+                    endScreenController.ShowLoss(message);
                 }
             }
         }
@@ -104,7 +111,6 @@ public IEnumerator StartCountdown()
                 count++;
             }
         }
-
     }
 
     void DisplayTime(float timeToDisplay)
@@ -112,7 +118,7 @@ public IEnumerator StartCountdown()
         timerText.text = FormatTime(timeToDisplay);
     }
 
-    string FormatTime(float time)
+    public string FormatTime(float time)
     {
         int minutes = Mathf.FloorToInt(time / 60);
         int seconds = Mathf.FloorToInt(time % 60);
