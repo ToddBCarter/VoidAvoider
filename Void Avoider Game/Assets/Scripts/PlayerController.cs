@@ -64,7 +64,8 @@ public class PlayerController : MonoBehaviour
         float clampedY = Mathf.Clamp(transform.position.y, -halfHeight + 0.5f, halfHeight - 0.5f);
         transform.position = new Vector3(clampedX, clampedY, 0f);
 
-        if (transform.position.x < Camera.main.transform.position.x - destroyDistance)
+        float leftEdge = Camera.main.transform.position.x - Camera.main.orthographicSize * Camera.main.aspect + 1f;
+        if (transform.position.x < leftEdge)
         {
             StartCoroutine(Shrink());
         }

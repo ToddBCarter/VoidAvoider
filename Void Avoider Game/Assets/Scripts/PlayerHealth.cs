@@ -46,6 +46,8 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            AudioManager.Instance.PlaySound("failure");
+            AudioManager.Instance.ChangeBackgroundMusic(AudioManager.Instance.MenuMusic, 0.4f, true);
             Debug.Log("Ship destroyed!");
             gameObject.SetActive(false);
             currentHealth = 0;

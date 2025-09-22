@@ -18,8 +18,9 @@ public class Mover : MonoBehaviour
     void Update()
     {
         transform.Translate(speed * Time.deltaTime * Vector3.left);
+        float leftEdge = Camera.main.transform.position.x - Camera.main.orthographicSize * Camera.main.aspect + 1f;
 
-        if (transform.position.x < Camera.main.transform.position.x - destroyDistance)
+        if (transform.position.x < leftEdge)
         {
             StartCoroutine(Shrink());
         }

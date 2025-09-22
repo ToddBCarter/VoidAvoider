@@ -3235,9 +3235,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: 1
-  levelTime: 6
+  levelTime: 60
   objectSpeed: 10
-  spawnInterval: 0.5
+  spawnInterval: 0.9
   endlessMode: 0
 --- !u!4 &949609171
 Transform:
