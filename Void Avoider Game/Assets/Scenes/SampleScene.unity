@@ -2917,7 +2917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: 1
-  levelTime: 5
+  levelTime: 60
   objectSpeed: 5
   spawnInterval: 1
 --- !u!4 &949609171
