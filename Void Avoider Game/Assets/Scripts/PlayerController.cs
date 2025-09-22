@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private float halfWidth;
 
     private bool isShrinking = false;
+    [SerializeField] PlayerHealth playerHealth;
 
     public float MoveSpeed
     {
@@ -91,6 +92,12 @@ public class PlayerController : MonoBehaviour
         }
 
         transform.localScale = targetScale;
+
+        playerHealth.CurrentHealth = 0;
+        EndScreenController endScreenController = FindObjectOfType<EndScreenController>();
+        AudioManager.Instance.PlaySound("failure");
+        endScreenController.ShowLoss();
+
         Destroy(gameObject);
     }
 

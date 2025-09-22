@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class NextLevel : MonoBehaviour
 {	
-	public SpriteRenderer spriteRenderer;
+	public Image spriteRenderer;
 	public Sprite bg1; //default bg
 	public Sprite bg2; //bg for level 2
 	public Sprite bg3; //bg for level 3
@@ -33,7 +34,7 @@ public class NextLevel : MonoBehaviour
         {
             case 2:
                 GameManager.Instance.levelTime = 90f;
-                GameManager.Instance.objectSpeed = 8f;
+                GameManager.Instance.objectSpeed = 14f;
                 GameManager.Instance.spawnInterval = 0.7f;
                 break;
             case 3:
