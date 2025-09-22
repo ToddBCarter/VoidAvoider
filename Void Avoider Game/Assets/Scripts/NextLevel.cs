@@ -2,7 +2,29 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class NextLevel : MonoBehaviour
-{
+{	
+	public SpriteRenderer spriteRenderer;
+	public Sprite bg1; //default bg
+	public Sprite bg2; //bg for level 2
+	public Sprite bg3; //bg for level 3
+	private Sprite newBG;
+	
+	void Start()
+    {
+        switch (GameManager.Instance.currentLevel)
+        {
+            case 2:
+                spriteRenderer.sprite = bg2;
+                break;
+            case 3:
+                spriteRenderer.sprite = bg3;
+                break;
+            default:
+                spriteRenderer.sprite = bg1;
+                break;
+        }
+    }
+	
     public void LoadNextLevel()
     {
         GameManager.Instance.currentLevel++;
